@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React Revision</title>
+    <style>
+        .image{
+            width: 360px;
+            height: 360px;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const superheroes=[
+            {
+                name:"Batman",
+                powers:["Rich","fly","Genius"],
+                address:{
+                street:"Gothan St",
+                city:"Gothan",
+                country:"USA",
+            },
+         age:12,
+         isBachelor:true,
+         imageUrl:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwhsff6I0jzY-ZjzgbhkjDlYZMGierVLrtBg&usqp=CAU",
+            },
+            {
+                name:"SuperMan",
+                powers:["Laser","fly","Run Fast"],
+                address:{
+                street:"centeral St",
+                city:"New York",
+                country:"USA",
+            },
+         age:41,
+         isBachelor:false,
+         imageUrl:"https://static.miraheze.org/loathsomecharacterswiki/thumb/e/e9/Superman_%28Henry_Cavill%29.png/290px-Superman_%28Henry_Cavill%29.png",
+            },
+        ]
+  
+    function SuperHero({imageUrl, name,age,powers}){
+
+        return (
+         <div>
+            <img src={imageUrl} className="image"/>
+           <h1>Name:{name}</h1> 
+           <p>Age:{age}</p>
+          {/*<div>power:{power.join(', ')}</div>*/}
+          <div>
+            powers:
+            <ul>
+               {powers.map((power)=>(
+                <li>{power}</li>
+        ))}
+                
+            </ul>
+
+            </div>
+            </div>
+        )   
+    }
+    function App() {
+        
+        
+      return (
+        <>  
+        
+            {superheroes .map((superhero)=>(
+                <SuperHero {...superhero}/>
+      ))}
+        
+       
+        </>
+      )
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
+</html>
